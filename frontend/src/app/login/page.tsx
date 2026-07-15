@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Shield, Mail, Lock, Sparkles, AlertCircle, ArrowRight, CheckCircle2 } from "lucide-react";
 import { API_URL } from "@/utils/api";
 
-export default function LoginPage() {
+function LoginContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   
@@ -386,5 +386,18 @@ export default function LoginPage() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={
+      <div className="flex flex-col items-center justify-center min-h-[50vh] space-y-3">
+        <div className="h-8 w-8 border-4 border-t-primary border-r-primary border-b-border border-l-border rounded-full animate-spin" />
+        <span className="text-xxs font-mono text-foreground/50">Loading authentication portal...</span>
+      </div>
+    }>
+      <LoginContent />
+    </Suspense>
   );
 }
