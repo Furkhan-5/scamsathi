@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS Theme Variables Setup */
+:root {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --card: rgba(255, 255, 255, 0.7);
+  --card-foreground: #0f172a;
+  --primary: #2563eb; /* Royal Blue */
+  --border: rgba(226, 232, 240, 0.8);
+  --accent: #ef4444;
+  --radius: 12px;
+  --font-family: 'Inter', sans-serif;
+  --speed: 0.3s;
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+  --background: #0b0f19;
+  --foreground: #f1f5f9;
+  --card: rgba(17, 24, 39, 0.65);
+  --card-foreground: #f1f5f9;
+  --primary: #3b82f6; /* Cyber Blue */
+  --border: rgba(55, 65, 81, 0.4);
+  --accent: #f87171;
+}
+
+/* Cyber Theme (Futuristic Neon) */
+[data-theme="cyber"] {
+  --background: #030008;
+  --foreground: #39ff14; /* Neon Green text */
+  --card: rgba(13, 2, 33, 0.75);
+  --card-foreground: #e2e8f0;
+  --primary: #00f0ff; /* Electric Cyan */
+  --border: rgba(0, 240, 255, 0.35);
+  --accent: #ff007f; /* Cyber Magenta */
+  --font-family: 'Space Grotesk', sans-serif;
+}
+
+/* Midnight Theme (Deep Navy/Purple) */
+[data-theme="midnight"] {
+  --background: #020210;
+  --foreground: #e0e7ff;
+  --card: rgba(8, 8, 32, 0.7);
+  --card-foreground: #e0e7ff;
+  --primary: #8b5cf6; /* Indigo Purple */
+  --border: rgba(139, 92, 246, 0.25);
+  --accent: #f43f5e;
+  --font-family: 'Poppins', sans-serif;
+}
+
+/* Apply Fonts, Transitions, backgrounds */
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-family);
+  transition: background-color var(--speed) ease, color var(--speed) ease, border-color var(--speed) ease;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Custom premium styles */
+.glass-card {
+  background: var(--card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  border-radius: var(--radius);
+  transition: transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.glass-card:hover {
+  border-color: var(--primary);
+  box-shadow: 0 10px 40px 0 rgba(var(--primary), 0.15);
+}
+
+.cyber-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(128, 128, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(128, 128, 255, 0.05) 1px, transparent 1px);
+}
+
+[data-theme="cyber"] .cyber-grid {
+  background-image: 
+    linear-gradient(to right, rgba(57, 255, 20, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(57, 255, 20, 0.04) 1px, transparent 1px);
+}
+
+/* Waveform simulation styles */
+.waveform-bar {
+  display: inline-block;
+  width: 4px;
+  background-color: var(--primary);
+  border-radius: 2px;
+  margin: 0 2px;
+  animation: wave 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes wave {
+  0% { height: 8px; }
+  100% { height: 36px; }
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

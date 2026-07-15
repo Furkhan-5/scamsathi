@@ -1,0 +1,28 @@
+# Dependency directories
+node_modules/
+frontend/node_modules/
+backend/venv/
+backend/.venv/
+venv/
+.venv/
+
+# Next.js build output
+.next/
+frontend/.next/
+
+# SQLite databases
+*.db
+*.db-journal
+
+# Local environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE configurations
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
